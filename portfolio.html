@@ -1,0 +1,2589 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<title>Portfólio | Bruno</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f5f5f5;
+    --card: #ffffff;
+    --card-border: #e5e5e5;
+    --text: #111111;
+    --muted: #6b6b6b;
+    --accent: #111111;
+    --navy: #1e3a8a;
+    --navy-soft: #2b4fb8;
+    --radius: 12px;
+    --max: 1120px;
+  }
+
+  /* ---------- Scrollbar ---------- */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--navy) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--navy);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--navy-soft);
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background: var(--navy);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ---------- Background glow ---------- */
+
+  .wrap {
+    width: 100%;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Navbar ---------- */
+  header.nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--bg);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    color: var(--text);
+  }
+
+  .brand .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    background: var(--text);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+  }
+
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text); }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding: 110px 0 90px;
+    text-align: center;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 4px;
+    border: 1px solid var(--card-border);
+    background: var(--bg-alt);
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .badge .pulse {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text);
+  }
+
+  .hero h1 {
+    margin: 26px auto 18px;
+    max-width: 820px;
+    font-size: clamp(2.4rem, 6vw, 4.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+  }
+
+  .hero h1 .grad {
+    color: var(--muted);
+  }
+
+  .hero p {
+    margin: 0 auto;
+    max-width: 620px;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+
+  .hero-actions {
+    margin-top: 38px;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 13px 26px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--text);
+    color: #ffffff;
+  }
+
+  .btn-primary:hover {
+    background: #333333;
+  }
+
+  .btn-ghost {
+    border: 1px solid var(--text);
+    background: transparent;
+    color: var(--text);
+  }
+
+  .btn-ghost:hover {
+    background: var(--bg-alt);
+  }
+
+  /* ---------- Section ---------- */
+  section.block {
+    padding: 60px 0;
+  }
+
+  /* Seção de experiência com fundo próprio */
+  section.block.tinted {
+    background: #eef0f3;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  section.block.tinted > .wrap {
+    padding-top: 0;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 44px;
+    flex-wrap: wrap;
+  }
+
+  .eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  .section-head h2 {
+    margin: 0;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    letter-spacing: -0.03em;
+    font-weight: 750;
+  }
+
+  .section-head p {
+    margin: 8px 0 0;
+    color: var(--muted);
+    max-width: 520px;
+  }
+
+  /* ---------- Cards ---------- */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 26px;
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    background: var(--card);
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+
+  /* Cards que abrem um painel */
+  .card.is-clickable {
+    cursor: pointer;
+    text-align: left;
+    font: inherit;
+    color: inherit;
+    width: 100%;
+  }
+
+  .card.is-clickable:focus-visible {
+    outline: 2px solid var(--text);
+    outline-offset: 3px;
+  }
+
+  .card.is-active {
+    border-color: var(--text);
+  }
+
+  .card:hover {
+    border-color: var(--text);
+    transform: translateY(-3px);
+  }
+
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    background: var(--bg-alt);
+    border: 1px solid var(--card-border);
+    color: var(--text);
+  }
+
+  .card-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .card h3 {
+    margin: 0 0 10px;
+    font-size: 1.22rem;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  .card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 20px;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 3px;
+    background: var(--bg-alt);
+    border: 1px solid var(--card-border);
+    color: var(--muted);
+  }
+
+  .card-link {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.88rem;
+    text-decoration: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+  }
+
+  /* Metadados do projeto dentro do painel */
+  .project-meta {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 0 0 26px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .project-meta .tags {
+    margin-top: 0;
+  }
+
+  .project-meta .repo-link {
+    margin-top: 2px;
+  }
+
+  /* Nota de repositório no card */
+  .repo-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+
+  .repo-link svg {
+    width: 14px;
+    height: 14px;
+    flex: none;
+  }
+
+  .repo-link a {
+    color: var(--muted);
+    text-decoration: none;
+    border-bottom: 1px solid var(--card-border);
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .repo-link a:hover {
+    color: var(--text);
+    border-color: var(--text);
+  }
+
+  .card-link .arrow { transition: transform 0.25s; }
+  .card-link:hover .arrow { transform: translateX(5px); }
+
+  .card.featured {
+    border-color: var(--text);
+    background: var(--card);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 3px;
+    color: #ffffff;
+    background: var(--text);
+  }
+
+  /* ---------- AeroJobs panel ---------- */
+  .aero-panel {
+    display: none;
+    margin-top: 34px;
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    background: var(--card);
+    overflow: hidden;
+  }
+
+  .aero-panel.open { display: block; }
+
+  .aero-head {
+    position: relative;
+    padding: 40px 40px 34px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .aero-head-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .aero-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    background: var(--bg-alt);
+    border: 1px solid var(--card-border);
+    color: var(--text);
+  }
+
+  .aero-logo svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .aero-head h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    letter-spacing: -0.03em;
+  }
+
+  .aero-head .sub {
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+
+  .aero-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 34px;
+    height: 34px;
+    border-radius: 6px;
+    border: 1px solid var(--card-border);
+    background: var(--card);
+    color: var(--text);
+    font-size: 1rem;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: background 0.2s;
+  }
+
+  .aero-close:hover {
+    background: var(--bg-alt);
+  }
+
+  .aero-intro { margin: 26px 0 0; }
+
+  .aero-intro + .aero-intro { margin-top: 14px; }
+
+  /* Documento do projeto (fluxo vertical) */
+  .aero-doc {
+    padding: 34px 40px 44px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .aero-doc p {
+    margin: 0 0 18px;
+    color: #333333;
+    font-size: 1rem;
+  }
+
+  .aero-doc h3 {
+    margin: 40px 0 12px;
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    padding-top: 26px;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .aero-doc h3:first-of-type { margin-top: 30px; }
+
+  /* Certificado (PDF) */
+  .cert-card {
+    margin: 22px 0 0;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    background: var(--bg-alt);
+    overflow: hidden;
+  }
+
+  .cert-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .cert-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cert-info svg {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    color: var(--text);
+  }
+
+  .cert-info strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .cert-info span {
+    display: block;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+
+  .cert-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .cert-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 14px;
+    border-radius: 7px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--text);
+    color: var(--text);
+    background: transparent;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .cert-btn:hover { background: var(--bg-alt); }
+
+  .cert-btn.solid {
+    background: var(--text);
+    color: #ffffff;
+  }
+
+  .cert-btn.solid:hover { background: #333333; }
+
+  .cert-frame {
+    display: block;
+    width: 100%;
+    height: 420px;
+    border: 0;
+    background: #ffffff;
+  }
+
+  .cert-preview {
+    display: block;
+    background: #ffffff;
+  }
+
+  .cert-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .cert-preview:hover img { opacity: 0.92; }
+
+  .figure {
+    margin: 26px 0 30px;
+  }
+
+  .figure-frame {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    background: var(--bg-alt);
+    overflow: hidden;
+  }
+
+  .figure-frame img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    visibility: hidden;
+  }
+
+  .figure-frame.has-img img { visibility: visible; }
+
+  .figure-frame.has-img .figure-ph,
+  .figure-frame.no-img img { display: none; }
+
+  .figure-ph {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.78rem;
+    text-align: center;
+    padding: 16px;
+  }
+
+  .figure-ph svg { width: 26px; height: 26px; }
+
+  .figure-ph code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.74rem;
+    color: var(--text);
+    background: #ffffff;
+    border: 1px solid var(--card-border);
+    border-radius: 4px;
+    padding: 3px 8px;
+  }
+
+  .figure figcaption {
+    margin-top: 10px;
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Landing Pages panel ---------- */
+  .lp-panel {
+    display: none;
+    margin-top: 34px;
+    border-radius: var(--radius);
+    border: 1px solid var(--card-border);
+    background: var(--card);
+    overflow: hidden;
+  }
+
+  .lp-panel.open { display: block; }
+
+  .lp-head {
+    position: relative;
+    padding: 32px 40px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .lp-head h2 {
+    margin: 0;
+    font-size: clamp(1.4rem, 2.8vw, 1.8rem);
+    letter-spacing: -0.03em;
+  }
+
+  .lp-head p {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .lp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    padding: 40px;
+  }
+
+  .lp-item {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .lp-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .lp-name {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .lp-name strong {
+    font-size: 1.02rem;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+  }
+
+  .lp-name span {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .lp-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .lp-item:hover .lp-open { border-color: var(--text); }
+
+  .lp-shot {
+    border-radius: 8px;
+    border: 1px solid var(--card-border);
+    background: var(--bg-alt);
+    overflow: hidden;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+
+  .lp-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .lp-item:hover .lp-shot {
+    border-color: var(--text);
+    transform: translateY(-2px);
+  }
+
+  .lp-url {
+    margin-top: 10px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.74rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Experiência ---------- */
+  .exp-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--card-border);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .exp-meta strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .exp-list {
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 12px;
+  }  .exp-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 0.95rem;
+    color: #333333;
+  }
+
+  .exp-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--text);
+  }
+
+  .exp-summary {
+    margin: 0 0 22px;
+    padding: 18px 20px;
+    border-left: 2px solid var(--text);
+    background: var(--bg-alt);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.95rem;
+    color: #333333;
+  }
+
+  .exp-company {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+
+  .exp-company strong {
+    font-size: 0.98rem;
+  }
+
+  .exp-company span {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Stepper vertical (arquitetura) ---------- */
+  .steps {
+    margin: 8px 0 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+  }
+
+  .steps::before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 12px;
+    bottom: 12px;
+    width: 1px;
+    background: var(--card-border);
+  }
+
+  .step {
+    position: relative;
+    padding: 0 0 26px 48px;
+  }
+
+  .step:last-child { padding-bottom: 0; }
+
+  .step-dot {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: var(--bg);
+    border: 1px solid var(--card-border);
+    color: var(--text);
+    z-index: 1;
+  }
+
+  .step.det .step-dot {
+    background: var(--text);
+    border-color: var(--text);
+    color: #ffffff;
+  }
+
+  .step.llm .step-dot {
+    background: var(--bg-alt);
+    border-color: var(--text);
+    border-width: 2px;
+  }
+
+  .step-head {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+
+  .step-head h4 {
+    margin: 0;
+    font-size: 0.97rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+
+  .badge-tag {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 3px;
+    border: 1px solid var(--card-border);
+    color: var(--muted);
+  }
+
+  .badge-tag.llm {
+    background: var(--bg-alt);
+    border-color: var(--text);
+    color: var(--text);
+  }
+
+  .step p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #444444;
+  }
+
+  .steps-legend {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin: 0 0 22px;
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .steps-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .steps-legend i {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid var(--card-border);
+    background: var(--bg);
+  }
+
+  .steps-legend i.solid {
+    background: var(--text);
+    border-color: var(--text);
+  }
+
+  .steps-legend i.outline {
+    border: 2px solid var(--text);
+  }
+
+  /* Exemplo de prompt */
+  .prompt-box {
+    margin: 22px 0 28px;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    background: var(--bg-alt);
+    overflow: hidden;
+  }
+
+  .prompt-box header {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .prompt-box pre {
+    margin: 0;
+    padding: 16px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.8rem;
+    line-height: 1.7;
+    color: #222222;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  /* Player de vídeo */
+  .video-card {
+    margin: 22px 0 0;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    background: var(--bg-alt);
+    overflow: hidden;
+  }
+
+  .video-card video {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #000000;
+  }
+
+  .video-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 12px 16px;
+    border-top: 1px solid var(--card-border);
+    font-size: 0.78rem;
+    color: var(--muted);
+  }
+
+  .video-meta strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ---------- Gráficos (scraper) ---------- */
+  .chart {
+    margin: 20px 0 28px;
+    padding: 20px;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    background: var(--bg-alt);
+  }
+
+  .chart-title {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: 170px 1fr 44px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.8rem;
+  }
+
+  .bar-row:last-child { margin-bottom: 0; }
+
+  .bar-label { color: #444444; }
+
+  .bar-track {
+    height: 10px;
+    border-radius: 999px;
+    background: #e2e2e2;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: var(--text);
+    width: 0;
+    transition: width 0.9s ease;
+  }
+
+  .bar-value {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .chart figcaption {
+    margin-top: 14px;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+
+  /* Matriz de decisão */
+  .matrix {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0 28px;
+  }
+
+  .matrix-cell {
+    padding: 16px;
+    border-radius: 10px;
+    border: 1px solid var(--card-border);
+    background: var(--bg-alt);
+  }
+
+  .matrix-cell strong {
+    display: block;
+    font-size: 0.86rem;
+    margin-bottom: 6px;
+  }
+
+  .matrix-cell span {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .matrix-cell.good {
+    background: var(--text);
+    border-color: var(--text);
+    color: #ffffff;
+  }
+
+  .matrix-cell.good strong { color: #ffffff; }
+  .matrix-cell.good span { color: #d4d4d4; }
+
+  /* KPIs */
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 22px 0 28px;
+  }
+
+  .kpi {
+    padding: 18px;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    background: var(--bg-alt);
+  }
+
+  .kpi strong {
+    display: block;
+    font-size: 1.5rem;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .kpi span {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Links úteis ---------- */
+  .links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  .link-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 20px;
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    background: var(--card);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .link-item:hover {
+    border-color: var(--text);
+    transform: translateY(-3px);
+  }
+
+  .link-icon {
+    width: 40px;
+    height: 40px;
+    flex: none;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    background: var(--bg-alt);
+    border: 1px solid var(--card-border);
+    color: var(--text);
+  }
+
+  .link-icon svg { width: 19px; height: 19px; }
+
+  .link-text strong {
+    display: block;
+    font-size: 0.94rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .link-text span {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--muted);
+    word-break: break-word;
+  }
+
+  .link-item .arrow {
+    margin-left: auto;
+    color: var(--muted);
+    transition: transform 0.25s, color 0.2s;
+  }
+
+  .link-item:hover .arrow {
+    transform: translateX(4px);
+    color: var(--text);
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    margin-top: 70px;
+    padding: 34px 0;
+    border-top: 1px solid var(--card-border);
+    color: var(--muted);
+    font-size: 0.82rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* ---------- Reveal animation ---------- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hero { padding: 70px 0 60px; }
+    .aero-head { padding: 30px 22px 26px; }
+    .aero-steps { padding: 22px; grid-template-columns: 1fr; }
+    .aero-doc { padding: 24px 22px 32px; }
+    .lp-head { padding: 24px 22px; }
+    .lp-list { padding: 24px 22px; gap: 34px; }
+    .section-head { margin-bottom: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top"><span class="dot"></span>Bruno.dev</a>
+    <nav class="nav-links">
+      <a href="#projetos">Projetos</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#links">Links úteis</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+
+  <!-- PROJETOS -->
+  <section class="block wrap" id="projetos">
+    <div class="section-head reveal">
+      <div>
+        <h2>Projetos Relevantes</h2>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal" id="lexemo-card" role="button" tabindex="0" aria-expanded="false" aria-controls="lexemo">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M7 16V9"/><path d="M12 16V4"/><path d="M17 16v-4"/></svg>
+        </div>
+        <h3>Lexemo</h3>
+        <p>Aplicativo de aprendizado de vocabulário com decks ilimitados, múltiplos modos de jogo e memorização guiada por repetição espaçada.</p>
+        <div class="tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">Python</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Web App</span>
+        </div>
+        <span class="repo-link" data-repo>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2.5-6-3"/><path d="M15 21v-4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v4"/><path d="M8 11a5 5 0 0 1 8 0"/></svg>
+          <a href="https://github.com/gatoxaxo/lexemo" target="_blank" rel="noopener">github.com/gatoxaxo/lexemo</a>
+        </span>
+        <span class="card-link" data-toggle="lexemo">
+          Ver detalhes <span class="arrow">→</span>
+        </span>
+      </article>
+
+      <article class="card featured reveal" id="aerojobs-card" role="button" tabindex="0" aria-expanded="false" aria-controls="aerojobs">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l18-8-4 12-5-4-3 3v-4z"/></svg>
+        </div>
+        <h3>AeroJobs</h3>
+        <p>Plataforma de recrutamento que simplifica o processo seletivo com transparência, cadastro enxuto e análise de currículos por inteligência artificial.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Web App</span>
+        </div>
+        <span class="repo-link" data-repo>Repositório privado</span>
+        <span class="card-link" data-toggle="aerojobs">
+          Ver detalhes <span class="arrow">→</span>
+        </span>
+      </article>
+
+      <article class="card reveal" id="landing-card" role="button" tabindex="0" aria-expanded="false" aria-controls="landing">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><path d="M10 6.5h4a3.5 3.5 0 0 1 3.5 3.5v4"/></svg>
+        </div>
+        <h3>Landing Pages</h3>
+        <p>Algumas landing pages usadas para consolidação de layouts.</p>
+        <div class="tags">
+          <span class="tag">JavaScript</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">Python</span>
+        </div>
+        <span class="repo-link" data-repo>Repositório privado</span>
+        <span class="card-link" data-toggle="landing">
+          Ver páginas <span class="arrow">→</span>
+        </span>
+      </article>
+
+      <article class="card reveal" id="fps-card" role="button" tabindex="0" aria-expanded="false" aria-controls="fps">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 9l5 3-5 3V9z"/></svg>
+        </div>
+        <h3>FPS Director</h3>
+        <p>Editor de vídeo por linguagem natural: um pipeline em nove camadas que transforma um pedido em português em comandos de yt-dlp e ffmpeg.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">FastAPI</span>
+        </div>
+        <span class="repo-link" data-repo>Repositório privado</span>
+        <span class="card-link" data-toggle="fps">
+          Ver arquitetura <span class="arrow">→</span>
+        </span>
+      </article>
+
+      <article class="card reveal" id="scraper-card" role="button" tabindex="0" aria-expanded="false" aria-controls="scraper">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.5-4.5"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
+        </div>
+        <h3>Scraper de Leads</h3>
+        <p>Bot que encontra clínicas pelo Brasil, cruza seguidores do Instagram e mede o grau de interconexão para separar demanda real de tráfego artificial.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Scraping</span>
+        </div>
+        <span class="repo-link" data-repo>Repositório privado</span>
+        <span class="card-link" data-toggle="scraper">
+          Ver detalhes <span class="arrow">→</span>
+        </span>
+      </article>
+
+      <article class="card reveal" id="hack-card" role="button" tabindex="0" aria-expanded="false" aria-controls="hack">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l6-6"/><path d="M7.5 16.5l3 3"/><path d="M14 10l-4 4"/><path d="M13.5 3.5L20.5 10.5 17 14l-7-7z"/></svg>
+        </div>
+        <h3>Hack and Slice (VR)</h3>
+        <p>Jogo em realidade virtual em que um sabre corta qualquer objeto em qualquer ângulo, com a malha sendo dividida em tempo real.</p>
+        <div class="tags">
+          <span class="tag">C#</span>
+          <span class="tag">Unity</span>
+          <span class="tag">VR</span>
+          <span class="tag">Mesh</span>
+        </div>
+        <span class="repo-link" data-repo>Repositório privado</span>
+        <span class="card-link" data-toggle="hack">
+          Ver detalhes <span class="arrow">→</span>
+        </span>
+      </article>
+
+      <article class="card reveal" id="assistente-card" role="button" tabindex="0" aria-expanded="false" aria-controls="assistente">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.4-.6L3 21l1.7-5.1A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg>
+        </div>
+        <h3>Assistente no WhatsApp</h3>
+        <p>Bot de assistente pessoal que começou como lembrete de cuidados e virou um generalista, rodando direto no WhatsApp com cron para os avisos.</p>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">MySQL</span>
+          <span class="tag">Bot</span>
+        </div>
+        <span class="repo-link" data-repo>Repositório privado</span>
+        <span class="card-link" data-toggle="assistente">
+          Ver detalhes <span class="arrow">→</span>
+        </span>
+      </article>
+    </div>
+
+    <!-- Lexemo detalhes -->
+    <div class="aero-panel" id="lexemo">
+      <div class="aero-head">
+        <button class="aero-close" data-close aria-label="Fechar detalhes">✕</button>
+        <div class="aero-head-top">
+          <div class="aero-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M7 16V9"/><path d="M12 16V4"/><path d="M17 16v-4"/></svg>
+          </div>
+          <div>
+            <h2>Lexemo</h2>
+            <p class="sub">Aprender vocabulário, palavra por palavra</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aero-doc">
+        <div class="project-meta">
+          <div class="tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">Python</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Web App</span>
+          </div>
+          <span class="repo-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2.5-6-3"/><path d="M15 21v-4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v4"/><path d="M8 11a5 5 0 0 1 8 0"/></svg>
+            <a href="https://github.com/gatoxaxo/lexemo" target="_blank" rel="noopener">github.com/gatoxaxo/lexemo</a>
+          </span>
+        </div>
+        <p>O Lexemo é um aplicativo de aprendizado de vocabulário construído em torno de decks de cartões. Em vez de listas fixas, cada deck pode crescer indefinidamente e ser jogado de várias maneiras, do reconhecimento rápido à pronúncia e à romanização de alfabetos não latinos.</p>
+
+        <p>O objetivo é tirar o atrito da memorização: criar cards deixou de ser um trabalho manual, as dicas são removidas aos poucos até você depender só da memória, e tudo pode ser ajustado durante o jogo, sem sair da tela.</p>
+
+        <h3>1. Lista de decks</h3>
+        <p>Cada deck é um conjunto próprio de cards, com quantidade ilimitada de entradas. Os decks ficam organizados em uma lista selecionável, e a partir de qualquer um deles você escolhe o modo de jogo e começa a sessão.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="deck-list.png" alt="Modal de seleção de decks do Lexemo" loading="lazy" />
+          </div>
+          <figcaption>Seleção de decks, cada um com seu próprio conjunto de cards.</figcaption>
+        </figure>
+
+        <h3>2. Cards por JSON</h3>
+        <p>Em vez de cadastrar card por card, a lista inteira pode ser editada como um documento JSON com os campos <em>question</em>, <em>answer</em> e <em>hint</em>. Isso permite gerar decks grandes de uma só vez com a ajuda de chatbots, importar arquivos prontos e exportar o conteúdo para backup ou compartilhamento.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="lexemo-card-json.png" alt="Editor de conteúdo JSON dos cards" loading="lazy" />
+          </div>
+          <figcaption>Editor JSON com importação e exportação de arquivos.</figcaption>
+        </figure>
+
+        <h3>3. Jogo do avião</h3>
+        <p>Para treinar a velocidade de reconhecimento dos lexemas, um avião cruza a tela atirando letras e palavras conforme a tradução correspondente aparece. O exercício troca a leitura calma por reflexo: identificar a palavra certa sob pressão e no menor tempo possível.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="game-plane.png" alt="Jogo do avião com palavras espalhadas na tela" loading="lazy" />
+          </div>
+          <figcaption>Jogo do avião: reconhecimento rápido sob pressão de tempo.</figcaption>
+        </figure>
+
+        <h3>4. Modo livre</h3>
+        <p>No modo livre as dicas são opcionais e configuráveis: letras reveladas, cor fixa derivada do hash da palavra e posição previsível na tela. São apoio cognitivo no começo, mas o ponto principal é poder desligá-las gradualmente. A cada nível, menos pistas, até a palavra ser lembrada pelo que é, e não pela cor ou pelo lugar onde estava.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="lexemo-free.png" alt="Modo livre com dica de cor e posição" loading="lazy" />
+          </div>
+          <figcaption>Modo livre com dicas de cor e posição ativas.</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="lexemo-free-2.png" alt="Modo livre com dicas reduzidas" loading="lazy" />
+          </div>
+          <figcaption>Modo livre com as dicas já reduzidas.</figcaption>
+        </figure>
+
+        <h3>5. Modo transcrição</h3>
+        <p>Para idiomas que usam alfabetos não romanos, o treino pode ser feito pela romanização: o aplicativo mostra o texto original e você digita a leitura correspondente. É o passo intermediário entre decorar símbolos e conseguir ler palavras inteiras com fluidez.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="transcription.png" alt="Modo transcrição com texto em russo e romanização" loading="lazy" />
+          </div>
+          <figcaption>Modo transcrição: do alfabeto original à romanização.</figcaption>
+        </figure>
+
+        <h3>6. Editar card no jogo</h3>
+        <p>Qualquer card pode ser corrigido durante a sessão, em um formulário com pergunta, resposta e uma dica de contexto opcional. Ajustes de manutenção deixam de exigir abrir a lista inteira e procurar a entrada certa no meio de centenas de itens.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="edit.png" alt="Formulário de edição de card" loading="lazy" />
+          </div>
+          <figcaption>Edição individual do card sem sair do jogo.</figcaption>
+        </figure>
+
+        <h3>7. Opções de jogo</h3>
+        <p>Cada deck tem seus próprios ajustes: modo de jogo (livre, velocidade, SRS, pronúncia ou transcrição), voz da leitura, quantidade de letras reveladas, dicas de cor e posição, ordem aleatória, reinício ao errar e modos reverso, de audição e por sílabas. São as variáveis que definem se a sessão treina listening, speaking, reconhecimento ou reflexo.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="options.png" alt="Painel de opções de jogo do Lexemo" loading="lazy" />
+          </div>
+          <figcaption>Opções de jogo: modos e variáveis de cada sessão.</figcaption>
+        </figure>
+
+        <h3>8. Configurações gerais</h3>
+        <p>Fora da sessão, as preferências cuidam do ambiente: sons de acerto e erro, autoplay de áudio, tema escuro e idioma da interface. Assim o app fala a língua de quem usa, independentemente do idioma que está sendo estudado.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="lexemo-general.png" alt="Modal de opções gerais do Lexemo" loading="lazy" />
+          </div>
+          <figcaption>Opções gerais: som, tema e idioma da interface.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- Scraper de Leads detalhes -->
+    <div class="aero-panel" id="scraper">
+      <div class="aero-head">
+        <button class="aero-close" data-close aria-label="Fechar detalhes">✕</button>
+        <div class="aero-head-top">
+          <div class="aero-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.5-4.5"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
+          </div>
+          <div>
+            <h2>Scraper de Leads</h2>
+            <p class="sub">Prospecção por análise de rede no Instagram</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aero-doc">
+        <div class="project-meta">
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Scraping</span>
+          </div>
+          <span class="repo-link">Repositório privado</span>
+        </div>
+        <p>O objetivo era montar uma lista de leads realmente qualificados para oferecer tráfego pago e landing page, em vez de sair disparando mensagem para perfis aleatórios. A ideia foi buscar clínicas pelo Brasil, olhar o Instagram de cada uma e usar o comportamento da rede de seguidores como sinal de demanda.</p>
+        <p>O ponto central é a interconexão. Contra o senso comum, o número de seguidores diz pouco. O que diz muito é quantas conexões se repetem entre a conta analisada e os seguidores dela.</p>
+
+        <h3>Como o bot funciona</h3>
+        <ol class="steps">
+          <li class="step det">
+            <span class="step-dot">1</span>
+            <div class="step-head"><h4>Busca por segmento</h4><span class="badge-tag">Scraping</span></div>
+            <p>Queries rodadas via DuckDuckGo ou raspagem do Google, procurando clínicas de spa, depilação e consultórios em geral pelo país inteiro.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">2</span>
+            <div class="step-head"><h4>Abertura do perfil</h4><span class="badge-tag">Instagram</span></div>
+            <p>Para cada resultado, o bot abre a página no Instagram e coleta os dados básicos do perfil.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">3</span>
+            <div class="step-head"><h4>Checagem de Meta Ads</h4><span class="badge-tag">Meta Ads</span></div>
+            <p>Consulta a Meta Ads Library para verificar se aquele negócio já anuncia. Isso indica que existe verba circulando e alguém cuidando de aquisição.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">4</span>
+            <div class="step-head"><h4>Busca por site próprio</h4><span class="badge-tag">Instagram</span></div>
+            <p>Varredura no perfil para identificar se a clínica aponta para um site próprio. A ausência é um dos sinais de oportunidade para venda de landing page.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">5</span>
+            <div class="step-head"><h4>Cruzamento de seguidores</h4><span class="badge-tag">Grafo</span></div>
+            <p>Em contas abertas, o bot pega os seguidores da clínica, depois os seguidores desses seguidores, e cruza os dois conjuntos para ver quem aparece nos dois lados. Essa interseção é a medida de interconexão.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">6</span>
+            <div class="step-head"><h4>Avaliações no Google</h4><span class="badge-tag">Places API</span></div>
+            <p>Quando fazia sentido, a Google Places API entrava para checar avaliações e volume de reviews, ajudando a descartar clínicas muito pequenas que provavelmente não teriam orçamento.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">7</span>
+            <div class="step-head"><h4>Classificação do lead</h4><span class="badge-tag">Score</span></div>
+            <p>Cada perfil recebe uma leitura combinando interconexão, presença em ads e porte. O resultado final é uma lista pronta para abordagem fria.</p>
+          </li>
+        </ol>
+
+        <h3>O que a interconexão revela</h3>
+        <p>Os testes mostraram diferenças bem grandes entre nichos. Ambientes de rede como escolas tiveram mais de 90% das conexões com interseção, enquanto nichos muito específicos, como clínicas de remoção de tatuagem, quase não se cruzam.</p>
+
+        <figure class="chart">
+          <span class="chart-title">Interconexão média por tipo de negócio</span>
+          <div class="bar-row">
+            <span class="bar-label">Escolas / ambientes de rede</span>
+            <span class="bar-track"><span class="bar-fill" data-w="92"></span></span>
+            <span class="bar-value">92%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Estética e spa</span>
+            <span class="bar-track"><span class="bar-fill" data-w="64"></span></span>
+            <span class="bar-value">64%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Depilação</span>
+            <span class="bar-track"><span class="bar-fill" data-w="52"></span></span>
+            <span class="bar-value">52%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Consultórios em geral</span>
+            <span class="bar-track"><span class="bar-fill" data-w="38"></span></span>
+            <span class="bar-value">38%</span>
+          </div>
+          <div class="bar-row">
+            <span class="bar-label">Remoção de tatuagem</span>
+            <span class="bar-track"><span class="bar-fill" data-w="14"></span></span>
+            <span class="bar-value">14%</span>
+          </div>
+          <figcaption>Valores aproximados, usados para ilustrar o padrão observado nos testes.</figcaption>
+        </figure>
+
+        <h3>A lógica de decisão</h3>
+        <p>A combinação entre interconexão e presença em anúncios é o que dá sentido ao lead. Alta interconexão sugere um negócio que cresce por indicação e tem demanda orgânica. Baixa interconexão com presença forte em Meta Ads levanta a suspeita de que aquele resultado depende de tráfego pago, o que costuma indicar alguém em busca de clientes.</p>
+        <p>Vale dizer que isso não é uma afirmação categórica sobre o negócio. É um sinal, e mesmo como sinal já melhorava bastante a qualidade da lista em comparação a pegar conjuntos aleatórios de perfis.</p>
+
+        <div class="matrix">
+          <div class="matrix-cell good">
+            <strong>Baixa interconexão + Meta Ads forte</strong>
+            <span>Melhor cenário: provável dependência de tráfego pago.</span>
+          </div>
+          <div class="matrix-cell">
+            <strong>Alta interconexão + Meta Ads forte</strong>
+            <span>Demanda orgânica consolidada e já investindo. Bom cliente, abordagem diferente.</span>
+          </div>
+          <div class="matrix-cell">
+            <strong>Alta interconexão + sem Ads</strong>
+            <span>Cresce por indicação. Menos urgente, mas com potencial de primeiro projeto.</span>
+          </div>
+          <div class="matrix-cell">
+            <strong>Baixa interconexão + sem Ads</strong>
+            <span>Pouco sinal. Normalmente descartado ou deixado para o fim da fila.</span>
+          </div>
+        </div>
+
+        <h3>Resultado</h3>
+        <div class="kpis">
+          <div class="kpi"><strong>+1000</strong><span>perfis de Instagram em uma execução</span></div>
+          <div class="kpi"><strong>2h</strong><span>de execução contínua do bot</span></div>
+          <div class="kpi"><strong>+90%</strong><span>de interseção em redes de escolas</span></div>
+          <div class="kpi"><strong>3</strong><span>fontes: busca, Meta Ads e Places</span></div>
+        </div>
+        <p>Rodando por duas horas seguidas, o bot devolvia mais de mil perfis com informação suficiente para uma abordagem fria. A diferença principal em relação a uma lista aleatória era ter um motivo concreto para priorizar cada contato.</p>
+      </div>
+    </div>
+
+    <!-- Hack and Slice detalhes -->
+    <div class="aero-panel" id="hack">
+      <div class="aero-head">
+        <button class="aero-close" data-close aria-label="Fechar detalhes">✕</button>
+        <div class="aero-head-top">
+          <div class="aero-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l6-6"/><path d="M7.5 16.5l3 3"/><path d="M14 10l-4 4"/><path d="M13.5 3.5L20.5 10.5 17 14l-7-7z"/></svg>
+          </div>
+          <div>
+            <h2>Hack and Slice (VR)</h2>
+            <p class="sub">Corte de malhas em realidade virtual</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aero-doc">
+        <div class="project-meta">
+          <div class="tags">
+            <span class="tag">C#</span>
+            <span class="tag">Unity</span>
+            <span class="tag">VR</span>
+            <span class="tag">Mesh</span>
+          </div>
+          <span class="repo-link">Repositório privado</span>
+        </div>
+        <p>Um experimento de realidade virtual em Unity com física de sabre. A ideia era simples de explicar e difícil de fazer: o jogador tem um sabre de luz e pode cortar qualquer objeto do cenário, de qualquer ângulo.</p>
+        <p>Não havia lista de objetos pré-cortados. A malha era dividida na hora, com base em onde e em que direção o sabre passava.</p>
+
+        <h3>Como o corte funciona</h3>
+        <p>O sabre não é um raio nem uma colisão comum. Ele é tratado como um plano em movimento: a cada quadro, a velocidade entre a posição anterior e a atual define uma direção, e essa direção forma um plano de corte no espaço.</p>
+        <p>A malha é então dividida por esse plano. Os triângulos que ficam de cada lado são mantidos e os que cruzam a linha de corte são subdivididos em pedaços menores, para que a borda do corte siga exatamente o plano. Isso vale para qualquer modelo, não importa a forma, sem precisar de preparação prévia no asset.</p>
+        <p>Depois da subdivisão, cada lado recebe sua própria capa: os pontos onde o plano atravessou o volume são conectados para fechar a superfície. Sem isso, o objeto cortado ficaria oco e a ilusão quebraria.</p>
+
+        <h3>Manter o 3D coerente</h3>
+        <ul class="exp-list">
+          <li>A divisão respeita a topologia original: cada fragmento continua sendo uma malha fechada e válida.</li>
+          <li>Normais, coordenadas de textura e tangentes são recalculadas nos novos vértices, para que a luz e a textura continuem certas depois do corte.</li>
+          <li>A física acompanha a geometria: cada metade recebe seu próprio corpo físico e passa a se comportar de forma independente.</li>
+          <li>O corte é feito a partir da velocidade do sabre, então a direção do golpe importa de verdade.</li>
+        </ul>
+
+        <h3>Demo</h3>
+        <p>O vídeo mostra a demonstração em um headset, com o jogo rodando na tela ao lado. São cortes em sequência, cada um dividindo o objeto em partes que continuam se comportando como corpos reais.</p>
+
+        <div class="video-card">
+          <video controls preload="metadata" playsinline poster="img/hack-and-slice-poster.jpg" src="hack-and-slice.mp4">
+            Seu navegador não suporta reprodução de vídeo.
+          </video>
+          <div class="video-meta">
+            <span><strong>hack-and-slice.mp4</strong> · 848×478 · 24s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assistente no WhatsApp detalhes -->
+    <div class="aero-panel" id="assistente">
+      <div class="aero-head">
+        <button class="aero-close" data-close aria-label="Fechar detalhes">✕</button>
+        <div class="aero-head-top">
+          <div class="aero-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.4-.6L3 21l1.7-5.1A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/></svg>
+          </div>
+          <div>
+            <h2>Assistente no WhatsApp</h2>
+            <p class="sub">De lembrete de cuidados a assistente pessoal</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aero-doc">
+        <div class="project-meta">
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Bot</span>
+          </div>
+          <span class="repo-link">Repositório privado</span>
+        </div>
+        <p>Começou como um favor. Uma amiga vivia esquecendo as datas dos próprios cuidados, cabelo, unha, sobrancelha, e pedi para um bot lembrar ela. A ideia era só isso: mandar uma mensagem no dia certo.</p>
+        <p>Só que, depois de pronto, ficou claro que o formato servia para muito mais coisa. O escopo cresceu e o bot virou um assistente pessoal de uso geral, sempre dentro do WhatsApp, sem aplicativo, sem painel e sem banco de dados.</p>
+
+        <h3>Como funciona</h3>
+        <p>O bot escuta as mensagens, entende o que foi pedido e mantém os lembretes em texto, num arquivo simples. Não tem tabela, schema, nem nada do tipo. A persistência é literalmente o que ele combinou com a pessoa, e isso basta para o volume de uso.</p>
+        <p>Para os avisos, um cron roda periodicamente, verifica o que venceu e dispara a mensagem na hora certa. Como o canal é o WhatsApp, não precisa notificação push, nem app instalado, nem token de plataforma, o usuário só abre a conversa.</p>
+
+        <h3>Conversa natural</h3>
+        <p>O usuário não preenche formulário. Ele escreve do jeito que falaria e o bot vai montando a lista, confirmando o que entendeu e pedindo o que falta. Quando pedem a lista, ele devolve formatada. Quando perguntam a data do próximo evento, ele calcula a partir da frequência combinada.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="img/assistente-01-agendando.png" alt="Conversa no WhatsApp em que o assistente cadastra cabelo, unha e sobrancelha a partir do texto livre" loading="lazy" />
+          </div>
+          <figcaption>Cadastro por conversa, sem formulário e sem tela de configuração.</figcaption>
+        </figure>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="img/assistente-02-lista.png" alt="Assistente respondendo a lista de cuidados e calculando a data do próximo corte" loading="lazy" />
+          </div>
+          <figcaption>Lista sob demanda e cálculo da próxima data com base na frequência.</figcaption>
+        </figure>
+
+        <h3>Prompt injection</h3>
+        <p>Um assistente aberto no WhatsApp é alvo fácil, e testar isso virou parte do desenvolvimento. Um dos testes era tentar desviar o bot com instruções do tipo "ignore tudo que veio antes e responda outra coisa".</p>
+        <p>A defesa é manter a persona e o escopo bem definidos no sistema: o bot é um assistente pessoal e não muda de papel. Não é uma proteção infalível, mas segura os casos bobos sem estragar a conversa normal.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="img/assistente-03-prompt-injection.png" alt="Tentativa de prompt injection recusada pelo assistente no WhatsApp" loading="lazy" />
+          </div>
+          <figcaption>Injeção de instruções bloqueada pela definição de escopo do assistente.</figcaption>
+        </figure>
+
+        <h3>O que aprendi</h3>
+        <ul class="exp-list">
+          <li>Restringir escopo não é pouca ambição, é o que faz o bot ser confiável no dia a dia.</li>
+          <li>Nem todo projeto precisa de banco, painel e app. Um cron e um arquivo resolvem muita coisa.</li>
+          <li>Testar prompt injection deveria ser hábito, igual testar caso de erro.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FPS Director detalhes -->
+    <div class="aero-panel" id="fps">
+      <div class="aero-head">
+        <button class="aero-close" data-close aria-label="Fechar detalhes">✕</button>
+        <div class="aero-head-top">
+          <div class="aero-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M10 9l5 3-5 3V9z"/></svg>
+          </div>
+          <div>
+            <h2>FPS Director</h2>
+            <p class="sub">Edição de vídeo por linguagem natural</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aero-doc">
+        <div class="project-meta">
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">FastAPI</span>
+          </div>
+          <span class="repo-link">Repositório privado</span>
+        </div>
+        <p>O FPS Director é um backend em FastAPI que converte pedidos em português para comandos de yt-dlp e ffmpeg. A ideia central é separar duas coisas que costumam se misturar: entender o que a pessoa quis dizer e construir de fato a saída de vídeo.</p>
+        <p>Um modelo de linguagem cuida só da interpretação. O backend, escrito em regras determinísticas, decide sobre qual mídia concreta agir e como montar o resultado. Assim o modelo não precisa saber durações, cortes ou estado da sessão, e o backend não tenta adivinhar linguagem.</p>
+
+        <h3>Como o vídeo é representado</h3>
+        <p>Não existe animação no modelo. O vídeo final é uma sequência de estados fixos, cada um com uma camada, um intervalo de tempo e um conjunto de propriedades constantes. Qualquer coisa que varie no tempo, como uma rampa de brilho, é quebrada em vários intervalos curtos.</p>
+        <p>O pipeline mantém dois trilhos independentes que não se misturam: um de linhagem, que guarda de onde cada mídia derivou, e outro de coerência, que guarda o estado físico consolidado, como velocidade, duração e exclusividade entre propriedades.</p>
+
+        <h3>As nove camadas</h3>
+        <div class="steps-legend">
+          <span><i class="outline"></i> camada com modelo de linguagem</span>
+          <span><i class="solid"></i> camada determinística</span>
+        </div>
+        <ol class="steps">
+          <li class="step llm">
+            <span class="step-dot">1</span>
+            <div class="step-head"><h4>Reduter</h4><span class="badge-tag llm">LLM</span></div>
+            <p>Lê o pedido e separa as intenções por entidade, mantendo os trechos originais, e também a linhagem conceitual daquele evento. Ainda sem resolver estado, sem números e sem vínculos.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">2</span>
+            <div class="step-head"><h4>Ancorer</h4><span class="badge-tag">Determinístico</span></div>
+            <p>Grupo que ancora o evento novo à sessão. Primeiro a linhagem é casada com a linhagem salva da iteração anterior, por entidade. Depois cada intenção crua é classificada em tipo, escopo e valor, definindo se o pedido fala de janela, duração, velocidade ou propriedade, e se o alvo é o vídeo, o áudio ou o material.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">3</span>
+            <div class="step-head"><h4>Structurer</h4><span class="badge-tag">Determinístico</span></div>
+            <p>Transforma a linhagem acumulada em blocos simbólicos. É uma tradução mecânica, sem reinterpretar nada. Se aparecer algo sem mapeamento definido, a camada sinaliza em vez de chutar.</p>
+          </li>
+          <li class="step llm">
+            <span class="step-dot">4</span>
+            <div class="step-head"><h4>Canonizer</h4><span class="badge-tag llm">LLM</span></div>
+            <p>Traduz a chave simbólica para uma propriedade canônica. Se não houver correspondência direta, tenta compor o efeito a partir de propriedades que já existem. Se nem isso for possível, devolve uma pergunta ao invés de inventar.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">5</span>
+            <div class="step-head"><h4>Composed prop generator</h4><span class="badge-tag">Determinístico</span></div>
+            <p>Quando a camada anterior compõe um efeito, ele é registrado no vocabulário interno como cache e normalizado para as propriedades canônicas. Quando vem uma pergunta, ela é encaminhada para a interface.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">6</span>
+            <div class="step-head"><h4>Quantifier</h4><span class="badge-tag">Determinístico</span></div>
+            <p>Atribui números aos valores simbólicos, resolvendo frações, tempos e posições em relação aos fatos conhecidos.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">7</span>
+            <div class="step-head"><h4>Solver</h4><span class="badge-tag">Determinístico</span></div>
+            <p>Resolve e valida a aritmética, deixando os cortes prontos para a etapa seguinte.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">8</span>
+            <div class="step-head"><h4>Contextualizer</h4><span class="badge-tag">Determinístico</span></div>
+            <p>Liga cada bloco ao estado real em que precisa atuar, subindo na linhagem até encontrar o primeiro estado que contenha o intervalo pedido. Também cria os vínculos entre mídias dependentes. A referência explícita ao material original é o único caso que aponta direto para a fonte.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">9</span>
+            <div class="step-head"><h4>Coherence engine</h4><span class="badge-tag">Determinístico</span></div>
+            <p>Aplica as regras físicas do domínio, como exclusividade entre propriedades e propagação de duração pelos vínculos. Usa um grafo leve com ordem topológica, em que as arestas vêm das próprias regras, não de uma sequência fixa no código. O estado final fica na sessão para a próxima iteração.</p>
+          </li>
+          <li class="step det">
+            <span class="step-dot">10</span>
+            <div class="step-head"><h4>Composer</h4><span class="badge-tag">Determinístico</span></div>
+            <p>Monta dois artefatos em paralelo: o grafo posicional que vai para o front, com mídias, camadas e intervalos, e a linhagem consolidada da iteração, que fica salva na sessão e volta para a segunda camada no próximo pedido.</p>
+          </li>
+        </ol>
+
+        <h3>Exemplo de uso</h3>
+        <p>Este é um pedido real usado para testar o pipeline. Ele mistura três vídeos, boomerang, velocidade, orientação e saturação no mesmo comando:</p>
+
+        <div class="prompt-box">
+          <header>Prompt</header>
+          <pre>https://www.youtube.com/watch?v=fnRoGF3VNpk pegue de 0:55 até 0:58 faz um boomerang em slow motion de cabeça pra baixo com  saturacao la no talo da metade do boomerang pra frente deixe a orientacao e velocidade normais
+ai toca o video normalmente em todos os sentidos e em seguida coloca esse https://www.youtube.com/watch?v=cDFNlO6QFWk do 0:21 até o fim
+deixe o video cDFNlO6QFWk de ponta cabeça do inicio pra metade e da metade pro final deixa a orientacao  normal</pre>
+        </div>
+
+        <h3>Resultado</h3>
+        <p>O vídeo abaixo é a saída gerada a partir desse prompt, com as mídias baixadas, cortadas e compostas pelo pipeline.</p>
+
+        <div class="video-card">
+          <video controls preload="metadata" playsinline poster="img/fps-poster.jpg" src="final.mp4">
+            Seu navegador não suporta reprodução de vídeo.
+          </video>
+          <div class="video-meta">
+            <span><strong>final.mp4</strong> · 1280×720 · 17s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Landing Pages detalhes -->
+    <div class="lp-panel" id="landing">
+      <div class="lp-head">
+        <button class="aero-close" data-close aria-label="Fechar páginas">✕</button>
+        <div class="project-meta">
+          <div class="tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Python</span>
+          </div>
+          <span class="repo-link">Repositório privado</span>
+        </div>
+        <h2>Landing Pages</h2>
+        <p>Algumas landing pages usadas para consolidação de layouts.</p>
+      </div>
+
+      <div class="lp-list">
+        <a class="lp-item" href="https://albertomarcenaria.netlify.app/" target="_blank" rel="noopener">
+          <div class="lp-bar">
+            <div class="lp-name">
+              <strong>Alberto Marcenaria</strong>
+              <span>Móveis sob medida · Londrina, PR</span>
+            </div>
+            <span class="lp-open">Abrir página <span class="arrow">→</span></span>
+          </div>
+          <div class="lp-shot">
+            <img src="page1.png" alt="Prévia da landing page Alberto Marcenaria" loading="lazy" />
+          </div>
+          <div class="lp-url">https://albertomarcenaria.netlify.app/</div>
+        </a>
+
+        <a class="lp-item" href="https://outlineventos.netlify.app/" target="_blank" rel="noopener">
+          <div class="lp-bar">
+            <div class="lp-name">
+              <strong>Outline</strong>
+              <span>Festival e experiências culturais</span>
+            </div>
+            <span class="lp-open">Abrir página <span class="arrow">→</span></span>
+          </div>
+          <div class="lp-shot">
+            <img src="page2.png" alt="Prévia da landing page Outline" loading="lazy" />
+          </div>
+          <div class="lp-url">https://outlineventos.netlify.app/</div>
+        </a>
+
+        <a class="lp-item" href="https://nitrovidro.netlify.app/" target="_blank" rel="noopener">
+          <div class="lp-bar">
+            <div class="lp-name">
+              <strong>Nitro Vidro</strong>
+              <span>Vidraçaria · Londrina e Maringá, PR</span>
+            </div>
+            <span class="lp-open">Abrir página <span class="arrow">→</span></span>
+          </div>
+          <div class="lp-shot">
+            <img src="page3.png" alt="Prévia da landing page Nitro Vidro" loading="lazy" />
+          </div>
+          <div class="lp-url">https://nitrovidro.netlify.app/</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- AeroJobs detalhes -->
+    <div class="aero-panel" id="aerojobs">
+      <div class="aero-head">
+        <button class="aero-close" data-close aria-label="Fechar detalhes">✕</button>
+        <div class="aero-head-top">
+          <div class="aero-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15l18-8-4 12-5-4-3 3v-4z"/></svg>
+          </div>
+          <div>
+            <h2>AeroJobs</h2>
+            <p class="sub">Recrutamento sem burocracia</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aero-doc">
+        <div class="project-meta">
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">Web App</span>
+          </div>
+          <span class="repo-link">Repositório privado</span>
+        </div>
+        <p>O AeroJobs é uma plataforma de recrutamento que busca simplificar a vida de candidatos e recrutadores. A ideia é tornar as vagas mais transparentes, facilitar as candidaturas e usar inteligência artificial para analisar currículos e identificar compatibilidade com os requisitos de cada oportunidade.</p>
+
+
+        <p>O foco é reduzir etapas desnecessárias e tornar o processo seletivo mais ágil, claro e humano, ajudando empresas a encontrar profissionais alinhados às vagas e candidatos a entender melhor suas oportunidades.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="img/aerojobs-01-plataforma.png" alt="Visão geral da plataforma AeroJobs" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="figure-ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5L5 20"/></svg>
+              <span>Imagem a inserir</span>
+              <code>img/aerojobs-01-plataforma.png</code>
+            </div>
+          </div>
+          <figcaption>Visão geral da plataforma.</figcaption>
+        </figure>
+
+        <h3>1. Criação de vagas</h3>
+        <p>O cadastro é simples e direto: a empresa informa apenas o título da vaga e sua descrição em texto livre, sem precisar preencher diversos formulários. O sistema analisa as informações e organiza os dados necessários para a publicação.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="img/aerojobs-s1-criacao-vagas.png" alt="Tela de criação de vaga" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="figure-ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5L5 20"/></svg>
+              <span>Imagem a inserir</span>
+              <code>img/aerojobs-s1-criacao-vagas.png</code>
+            </div>
+          </div>
+          <figcaption>Figura 1: Tela de criação de vagas.</figcaption>
+        </figure>
+
+        <h3>2. Página de descrição da vaga</h3>
+        <p>A vaga é apresentada ao candidato em um formato padronizado, com as informações organizadas automaticamente pelo sistema. Caso a empresa tenha outras oportunidades cadastradas, elas também podem ser exibidas na página.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="img/aerojobs-s2-descricao-vaga.png" alt="Página de descrição da vaga" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="figure-ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5L5 20"/></svg>
+              <span>Imagem a inserir</span>
+              <code>img/aerojobs-s2-descricao-vaga.png</code>
+            </div>
+          </div>
+          <figcaption>Figura 2: Página de descrição da vaga.</figcaption>
+        </figure>
+
+        <h3>3. Etapas do processo seletivo e cadastro</h3>
+        <p>Na parte final da página, o candidato encontra as etapas do processo seletivo e a opção de cadastrar seu currículo. O acesso é simplificado por meio do login com uma conta Google.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="img/aerojobs-s3-etapas-cadastro.png" alt="Etapas do processo seletivo e cadastro" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="figure-ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5L5 20"/></svg>
+              <span>Imagem a inserir</span>
+              <code>img/aerojobs-s3-etapas-cadastro.png</code>
+            </div>
+          </div>
+          <figcaption>Figura 3: Etapas do processo seletivo e cadastro.</figcaption>
+        </figure>
+
+        <h3>4. Envio e análise do currículo</h3>
+        <p>O candidato pode enviar seu currículo em diferentes formatos, como PDF, DOCX, PNG ou JPG. O sistema utiliza OCR e inteligência artificial para analisar o conteúdo e gerar um feedback imediato com base nos requisitos da vaga. Também é possível adicionar um documento complementar (aditivo), que poderá ser analisado pela IA em uma etapa futura.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="img/aerojobs-s4-envio-curriculo.jpeg" alt="Envio do currículo e feedback da IA" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="figure-ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5L5 20"/></svg>
+              <span>Imagem a inserir</span>
+              <code>img/aerojobs-s4-envio-curriculo.jpeg</code>
+            </div>
+          </div>
+          <figcaption>Figura 4: Envio do currículo e feedback gerado pela IA.</figcaption>
+        </figure>
+
+        <h3>5. Painel de candidatos do RH</h3>
+        <p>O recrutador visualiza a lista de candidaturas com o nível de compatibilidade (match score) de cada candidato, que pode ser configurado manualmente. Também é possível acessar os currículos individualmente para analisar os perfis com mais detalhes.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="img/aerojobs-s5-painel-candidatos.png" alt="Painel de candidatos do RH" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="figure-ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5L5 20"/></svg>
+              <span>Imagem a inserir</span>
+              <code>img/aerojobs-s5-painel-candidatos.png</code>
+            </div>
+          </div>
+          <figcaption>Figura 5: Painel de candidatos do RH.</figcaption>
+        </figure>
+
+        <h3>6. Painel de vagas do RH</h3>
+        <p>O painel reúne as vagas cadastradas pela empresa, facilitando a visualização e o gerenciamento das oportunidades publicadas.</p>
+
+        <figure class="figure">
+          <div class="figure-frame">
+            <img src="img/aerojobs-s6-painel-vagas.png" alt="Painel de vagas do RH" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.parentElement.classList.add('no-img')" />
+            <div class="figure-ph">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 15l-5-5L5 20"/></svg>
+              <span>Imagem a inserir</span>
+              <code>img/aerojobs-s6-painel-vagas.png</code>
+            </div>
+          </div>
+          <figcaption>Figura 6: Painel de vagas do RH.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIÊNCIA -->
+  <section class="block tinted" id="experiencia">
+    <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <h2>Experiência</h2>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal" id="exp-lideranca-card" role="button" tabindex="0" aria-expanded="false" aria-controls="exp-lideranca">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Supervisão de equipe</h3>
+        <p>Assumi a supervisão da equipe durante uma transição de lideranças, cuidando do onboarding, do treinamento e da divisão das demandas.</p>
+        <div class="exp-meta">
+          <strong>Exati Tecnologia - Analista de Sistemas Pleno II</strong>
+          <span>Nov 2024 a Abr 2026</span>
+        </div>
+        <span class="card-link">
+          Ver detalhes <span class="arrow">→</span>
+        </span>
+      </article>
+
+      <article class="card reveal" id="exp-firmware-card" role="button" tabindex="0" aria-expanded="false" aria-controls="exp-firmware">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
+        </div>
+        <h3>Firmware e telegestão</h3>
+        <p>Integração de dispositivos IoT com TALQ e IOTHub, reprogramação de embarcados, testes de rádio em bancada e eletrônica com Arduino.</p>
+        <div class="exp-meta">
+          <strong>Exati Tecnologia - Estágio a Pleno II</strong>
+          <span>Out 2021 a Abr 2026</span>
+        </div>
+        <span class="card-link">
+          Ver detalhes <span class="arrow">→</span>
+        </span>
+      </article>
+
+      <article class="card reveal" id="exp-projetos-card" role="button" tabindex="0" aria-expanded="false" aria-controls="exp-projetos">        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>Coordenação de projetos</h3>
+        <p>Migração multi-tenant com schema por cliente, integração do protocolo TALQ e otimização do app de telegestão.</p>
+        <div class="exp-meta">
+          <strong>Exati Tecnologia - Geral</strong>
+          <span>2021 a 2026</span>
+        </div>        <span class="card-link">
+          Ver detalhes <span class="arrow">→</span>
+        </span>
+      </article>
+
+      <article class="card reveal" id="exp-formacao-card" role="button" tabindex="0" aria-expanded="false" aria-controls="exp-formacao">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>
+        </div>
+        <h3>Formação acadêmica</h3>
+        <p>Bacharelado em Sistemas de Informação pela PUCPR, com passagem pela monitoria acadêmica e por uma liga de desenvolvimento de jogos.</p>
+        <div class="exp-meta">
+          <strong>PUCPR - Bacharelado em Sistemas de Informação</strong>
+          <span>2019 a 2023</span>
+        </div>
+        <span class="card-link">
+          Ver detalhes <span class="arrow">→</span>
+        </span>
+      </article>
+    </div>
+
+    <!-- Experiência: liderança -->
+    <div class="aero-panel" id="exp-lideranca">
+      <div class="aero-head">
+        <button class="aero-close" data-close aria-label="Fechar detalhes">✕</button>
+        <div class="aero-head-top">
+          <div class="aero-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div>
+            <h2>Supervisão de equipe</h2>
+            <p class="sub">Exati Tecnologia - Analista de Sistemas Pleno II</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aero-doc">
+        <div class="exp-company">
+          <strong>Exati Tecnologia - Analista de Sistemas Pleno II</strong>
+          <span>Curitiba, Paraná · Remoto</span>
+        </div>
+        <p class="exp-summary">Em um período de transição de lideranças, acabei assumindo a supervisão da equipe de software. Era algo novo pra mim e, honestamente, aprendi bastante no processo.</p>
+
+        <h3>Como foi</h3>
+        <p>Eu cuidava da distribuição de tarefas e do acompanhamento dos cards, além de atender demandas diretas que chegavam de outras áreas. Não era um time grande: um estagiário e um júnior, os dois muito dispostos a aprender.</p>
+        <p>Fiquei responsável pelo onboarding e pelo treinamento do estagiário, desde configurar o ambiente até entender como o sistema de telegestão funcionava de ponta a ponta. Depois disso, passamos a dividir as demandas entre ele e o júnior, sempre tentando encaixar cada tarefa com o que cada um já dominava e com o que fazia sentido aprender naquele momento.</p>
+        <p>O estagiário puxava muito bem as coisas: era proativo, curioso e fazia perguntas que às vezes me obrigavam a revisar alguma decisão minha. Boa parte do que funcionou nesse período veio menos de uma gestão estruturada e mais de manter a conversa aberta e o contexto claro pra todo mundo.</p>
+
+        <h3>O que ficou</h3>
+        <ul class="exp-list">
+          <li>Coordenação de tarefas, cards e demandas diretas durante a transição de liderança.</li>
+          <li>Onboarding, treinamento e acompanhamento do estagiário no dia a dia.</li>
+          <li>Delegação de demandas para o júnior e o estagiário, com base no nível de cada um.</li>
+          <li>Mais clareza de que liderar é, antes de tudo, dar contexto e confiança pro time fazer o trabalho.</li>
+        </ul>
+
+        <h3>Formação em liderança</h3>
+        <ul class="exp-list">
+          <li>Participação em treinamento de liderança técnica, aprimorando habilidades de coordenação de equipes de software e gestão de projetos ágeis.</li>
+        </ul>
+
+        <div class="cert-card">
+          <div class="cert-head">
+            <div class="cert-info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg>
+              <div>
+                <strong>Certificado Exati Empodera</strong>
+                <span>Programa de liderança · Carga horária de 12h</span>
+              </div>
+            </div>
+            <div class="cert-actions">
+              <a class="cert-btn" href="BrunoBergamini.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="cert-btn solid" href="BrunoBergamini.pdf" download="certificado-exati-empodera.pdf">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 21h16"/></svg>
+                Baixar
+              </a>
+            </div>
+          </div>
+          <a class="cert-preview" href="BrunoBergamini.pdf" target="_blank" rel="noopener" aria-label="Abrir certificado em nova aba">
+            <img src="img/certificado-preview-1.png" alt="Prévia do certificado Exati Empodera emitido para Bruno Bergamini" loading="lazy" />
+          </a>        </div>
+      </div>
+    </div>
+
+    <!-- Experiência: firmware e telegestão -->
+    <div class="aero-panel" id="exp-firmware">
+      <div class="aero-head">
+        <button class="aero-close" data-close aria-label="Fechar detalhes">✕</button>
+        <div class="aero-head-top">
+          <div class="aero-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>
+          </div>
+          <div>
+            <h2>Firmware e telegestão</h2>
+            <p class="sub">Exati Tecnologia - Estágio a Pleno II</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aero-doc">
+        <div class="exp-company">
+          <strong>Exati Tecnologia - Estágio a Pleno II</strong>
+          <span>Curitiba, Paraná · Remoto</span>
+        </div>
+        <p class="exp-summary">Boa parte do meu tempo foi em fazer o sistema conversar direito com os dispositivos. É uma área onde pequenos detalhes de comunicação viram problemas grandes na rua, então fui aprendendo na prática o que funcionava e o que não.</p>
+
+        <h3>Integração com os dispositivos</h3>
+        <p>Trabalhei com protocolos como TALQ e IOTHub para conectar os dispositivos ao sistema de gestão de cidades. O ganho que mais lembro foi uma redução de cerca de 40% nas falhas de comunicação, vindo de ajustes em timeouts, reconexão e no formato em que os dados eram tratados.</p>
+        <p>Também implementei comunicação via HTTP, BLE e rádio em pontos específicos do produto, do lado do controle remoto das lâmpadas. E usei Node-RED para orquestrar dispositivos e sensores dentro da telegestão, o que ajudou bastante na fase de testes com equipamentos reais.</p>
+
+        <h3>App e ferramentas do dia a dia</h3>
+        <p>Participei do desenvolvimento do Cidade Iluminada, um app pra interagir com os dispositivos IoT de forma mais direta, com TypeScript e Quasar no front-end. Também fiz módulos de monitoramento de consumo energético e telas do ERP de telegestão, sempre na linha de deixar a operação mais simples pra quem usa.</p>
+
+        <h3>Bancada, reprogramação e testes de rádio</h3>
+        <p>Não era só código no servidor. Em vários momentos o trabalho ia para a bancada: realizar fotos dos equipamentos para documentação, abrir o hardware, identificar versões de placa e reprogramar os embarcados na mão. Cada dispositivo que saía de fábrica com uma versão errada ou voltava de campo com comportamento estranho passava por esse processo.</p>
+        <p>Os testes de rádio eram parte fixa da rotina. Como a comunicação não era só via rede, boa parte dos problemas só aparecia na prática: alcance menor do que o esperado, pacotes que chegavam corrompidos, ou o mesmo dispositivo funcionando em um local e falhando em outro. Testar em bancada, com o equipamento em condições controladas, ajudava a separar problema de firmware, de hardware e de ambiente.</p>
+
+        <h3>A interferência da antena vizinha</h3>
+        <p>Um dos casos mais marcantes foi uma antena de transmissão de rádio que ficava ao lado da empresa. Em horários e condições específicas, ela atrapalhava os testes e o comportamento de alguns dispositivos, e durante um tempo a suspeita sempre caía no firmware, porque era ali que a falha aparecia.</p>
+        <p>O caminho foi eliminar variáveis. Primeiro, medir para confirmar que o problema era externo. Depois, isolar a bancada de teste com uma gaiola de Faraday, que bloqueia a interferência eletromagnética externa. Com o ambiente controlado, ficou possível testar o rádio sem o ruído da antena e chegar a conclusões que antes eram impossíveis de separar do resto.</p>
+        <p>Foi um aprendizado bem concreto: em sistemas embarcados, o ambiente é parte do problema. Às vezes o código está correto e o sinal é que não estava.</p>
+
+        <h3>Eletrônica e Arduino</h3>
+        <p>Essa proximidade com o hardware vinha de antes, de projetos pessoais com eletrônica e Arduino. Um deles foi um sistema de umidificador automático, que lia a umidade do ar e acionava o equipamento sozinho. É o tipo de projeto pequeno que ensina muito: sensores, leitura analógica, ruído, alimentação e o cuidado de não queimar nada no caminho.</p>
+        <p>Ter essa base ajudou bastante quando o assunto deixou de ser só software e passou a envolver dispositivos, placas e uma bancada cheia de coisa.</p>
+
+        <p>No meio disso tudo, aprendi que integrar hardware e software é menos sobre a tecnologia em si e mais sobre paciência pra investigar o motivo real de cada falha.</p>
+      </div>
+    </div>
+
+    <!-- Experiência: coordenação de projetos -->
+    <div class="aero-panel" id="exp-projetos">
+      <div class="aero-head">
+        <button class="aero-close" data-close aria-label="Fechar detalhes">✕</button>
+        <div class="aero-head-top">
+          <div class="aero-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          </div>
+          <div>
+            <h2>Coordenação de projetos</h2>
+            <p class="sub">Exati Tecnologia - Geral</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aero-doc">
+        <div class="exp-company">
+          <strong>Exati Tecnologia - Geral</strong>
+          <span>Curitiba, Paraná · Remoto</span>
+        </div>
+        <p class="exp-summary">Aqui a coisa foi menos sobre um projeto só e mais sobre destravar o que estava amarrado: o app da telegestão, a integração com o TALQ e a migração do banco. Tudo em sequência e com a operação rodando.</p>
+
+        <h3>App da telegestão e mapa customizável</h3>
+        <p>O app da telegestão tinha bastante espaço pra melhorar. Uma parte que gostei de trabalhar foi o mapa: dava pra customizar os ícones dos pontos, criar e ajustar polígonos, e organizar as áreas de cada cidade do jeito que o operador entendia melhor. Parece detalhe, mas ajudou muito na leitura dos dados no dia a dia.</p>
+        <p>Além do mapa, fiz uma rodada de otimização geral no sistema. Consultas que demoravam demais, telas que carregavam em etapas e pontos do fluxo que geravam trabalho manual foram sendo ajustados conforme dava, sem nunca poder parar a operação.</p>
+
+        <h3>Integração TALQ</h3>
+        <p>O TALQ deu dor de cabeça. Cada vez que integrava uma demanda nova da empresa, alguma parte da comunicação quebrava ou se comportava diferente do esperado, e eu ia atrás de entender o porquê. Com o tempo virei referência nessa parte e passei a coordenar as integrações desse protocolo, tentando padronizar o que era possível e documentar o resto.</p>
+
+        <h3>Migração multi-tenant</h3>
+        <p>A migração de multi-tenant foi provavelmente a parte mais estrutural que participei. Saímos de um modelo compartilhado para um schema por tenant, o que exigiu várias migrations e bastante cuidado com ordem e consistência dos dados.</p>
+        <p>Pra não perder a visão geral, montamos uma view de administração que era o union de todos os schemas dos clientes, permitindo consultar tudo de um lugar só. Tudo rodando em LoopBack e com um encapsulamento bem feito, pra que cada parte do sistema não precisasse saber onde um dado realmente morava.</p>
+        <p>Foi um trabalho longo, com ajustes ao longo do caminho, mas chegamos num modelo bem mais organizado e fácil de evoluir.</p>
+
+        <h3>Processos e automação</h3>
+        <ul class="exp-list">
+          <li>Geração automática de tickets de clientes com bots do Discord integrados ao YouTrack.</li>
+          <li>Relatórios de estimativa de faturamento com base na programação dos dispositivos, usados pela área comercial.</li>
+          <li>Sistema de apresentação de dispositivos com fins comerciais, facilitando a visualização pra clientes e parceiros.</li>
+          <li>Sistema de alocação de dispositivos para controle de estoque.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Experiência: formação acadêmica -->
+    <div class="aero-panel" id="exp-formacao">
+      <div class="aero-head">
+        <button class="aero-close" data-close aria-label="Fechar detalhes">✕</button>
+        <div class="aero-head-top">
+          <div class="aero-logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>
+          </div>
+          <div>
+            <h2>Formação acadêmica</h2>
+            <p class="sub">PUCPR - Bacharelado em Sistemas de Informação</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="aero-doc">
+        <div class="exp-company">
+          <strong>PUCPR - Bacharelado em Sistemas de Informação</strong>
+          <span>Curitiba, Paraná · 2019 a 2023</span>
+        </div>
+        <p class="exp-summary">Entrei pelo PROUNI e concluí o curso em novembro de 2023, com colação de grau em janeiro de 2024. Foi um período em que acabei dividindo o tempo entre a faculdade e o trabalho na Exati, o que me ensinou bastante sobre organização.</p>
+
+        <h3>Monitoria acadêmica</h3>
+        <p>Fui monitor em disciplinas de banco de dados e de programação orientada a objetos. Na prática, era acompanhar quem estava com dificuldade, explicar de novo o que já tinha sido visto em sala e revisar exercícios. Ajudou muito a firmar o conteúdo do meu lado e a aprender a explicar as coisas de formas diferentes, conforme a pessoa.</p>
+
+        <h3>Liga de desenvolvimento de jogos</h3>
+        <p>Também participei de uma liga de desenvolvimento de jogos em Unity 3D, com C# e suporte a realidade virtual. Era uma atividade que não tinha muito a ver com o que eu já fazia no trabalho, e talvez por isso tenha sido tão boa: dava pra experimentar, errar e aprender coisa nova sem pressão.</p>
+        <p>Desse período saiu o Hack and Slice, um projeto em VR pra cortar objetos em qualquer ângulo. É o trabalho que mais me fez entender malhas, subdivisão de triângulos e como manter a coerência de um modelo 3D depois de modificá-lo. Você encontra a demonstração e os detalhes técnicos na seção de projetos.</p>
+
+        <h3>O que ficou</h3>
+        <ul class="exp-list">
+          <li>Bacharelado em Sistemas de Informação, concluído em 2023.</li>
+          <li>Ingresso via PROUNI.</li>
+          <li>Monitoria em banco de dados e programação orientada a objetos.</li>
+          <li>Participação em liga de jogos em Unity 3D, com C# e realidade virtual.</li>
+          <li>Base que acabou servindo direto no trabalho com IoT, banco e sistemas distribuídos.</li>
+        </ul>
+
+        <div class="matrix" style="grid-template-columns:1fr;">
+          <div class="matrix-cell">
+            <strong>Projeto da liga: Hack and Slice (VR)</strong>
+            <span>Corte de malhas em tempo real em Unity, com física de sabre e subdivisão de geometria. A demonstração está no card do projeto, na seção acima.</span>
+          </div>
+        </div>
+
+        <div class="cert-card">
+          <div class="cert-head">
+            <div class="cert-info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c0 1.5 2.7 3 6 3s6-1.5 6-3v-5"/></svg>
+              <div>
+                <strong>Diploma digital PUCPR</strong>
+                <span>Bacharel em Sistemas de Informação · assinado digitalmente (Portaria 554/2019/MEC)</span>
+              </div>
+            </div>
+            <div class="cert-actions">
+              <a class="cert-btn" href="diploma%20digital.pdf" target="_blank" rel="noopener">Abrir PDF</a>
+              <a class="cert-btn solid" href="diploma%20digital.pdf" download="diploma-pucpr-sistemas-de-informacao.pdf">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 11l5 5 5-5"/><path d="M4 21h16"/></svg>
+                Baixar
+              </a>
+            </div>
+          </div>
+          <a class="cert-preview" href="diploma%20digital.pdf" target="_blank" rel="noopener" aria-label="Abrir diploma em nova aba">
+            <img src="img/diploma-preview-1.png" alt="Prévia do diploma digital da PUCPR de Bruno Bergamini do Nascimento" loading="lazy" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- LINKS ÚTEIS -->
+  <section class="block wrap" id="links">
+    <div class="section-head reveal">
+      <div>
+        <h2>Links úteis</h2>
+      </div>
+    </div>
+
+    <div class="links-grid">
+      <a class="link-item reveal" href="https://github.com/gatoxaxo" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.9a3.4 3.4 0 0 0-1-2.6c3-.3 6-1.5 6-6.6a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6s-1.2-.4-3.9 1.5a13.3 13.3 0 0 0-7 0C4.9-3.1 3.7-2.7 3.7-2.7a4.8 4.8 0 0 0-.1 3.6A5.2 5.2 0 0 0 2.2 4.5c0 5.1 3 6.3 6 6.6a3.4 3.4 0 0 0-1 2.6V21"/></svg>
+        </span>
+        <span class="link-text">
+          <strong>GitHub</strong>
+          <span>github.com/gatoxaxo</span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+      <a class="link-item reveal" href="https://www.linkedin.com/in/bruno--bergamini/" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-13h4v1.6A6 6 0 0 1 16 8z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </span>
+        <span class="link-text">
+          <strong>LinkedIn</strong>
+          <span>linkedin.com/in/bruno--bergamini</span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+      <a class="link-item reveal" href="https://api.whatsapp.com/send?phone=5541995933032" target="_blank" rel="noopener">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.4-.6L3 21l1.7-5.1A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4z"/><path d="M8.5 10.5c.5 2 2 3.5 4 4"/></svg>
+        </span>
+        <span class="link-text">
+          <strong>WhatsApp</strong>
+          <span>(41) 99593-3032</span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+
+      <a class="link-item reveal" href="curriculo-bruno-bergamini.pdf" download="curriculo-bruno-bergamini.pdf">
+        <span class="link-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 18v-6"/><path d="M9 15l3 3 3-3"/></svg>
+        </span>
+        <span class="link-text">
+          <strong>Currículo</strong>
+          <span>PDF para download</span>
+        </span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Painéis: apenas um ativo por vez
+  const panels = {
+    lexemo:  { panel: document.getElementById('lexemo'),  card: document.getElementById('lexemo-card'),  open: 'Ocultar detalhes', closed: 'Ver detalhes' },
+    aerojobs:{ panel: document.getElementById('aerojobs'), card: document.getElementById('aerojobs-card'), open: 'Ocultar detalhes', closed: 'Ver detalhes' },
+    landing: { panel: document.getElementById('landing'), card: document.getElementById('landing-card'), open: 'Ocultar páginas',  closed: 'Ver páginas' },
+    fps:     { panel: document.getElementById('fps'),     card: document.getElementById('fps-card'),     open: 'Ocultar arquitetura', closed: 'Ver arquitetura' },
+    scraper: { panel: document.getElementById('scraper'), card: document.getElementById('scraper-card'), open: 'Ocultar detalhes', closed: 'Ver detalhes' },
+    hack:    { panel: document.getElementById('hack'),    card: document.getElementById('hack-card'),    open: 'Ocultar detalhes', closed: 'Ver detalhes' },
+    assistente: { panel: document.getElementById('assistente'), card: document.getElementById('assistente-card'), open: 'Ocultar detalhes', closed: 'Ver detalhes' },
+    'exp-lideranca': { panel: document.getElementById('exp-lideranca'), card: document.getElementById('exp-lideranca-card'), open: 'Ocultar detalhes', closed: 'Ver detalhes' },
+    'exp-firmware':  { panel: document.getElementById('exp-firmware'),  card: document.getElementById('exp-firmware-card'),  open: 'Ocultar detalhes', closed: 'Ver detalhes' },
+    'exp-projetos':  { panel: document.getElementById('exp-projetos'),  card: document.getElementById('exp-projetos-card'),  open: 'Ocultar detalhes', closed: 'Ver detalhes' },
+    'exp-formacao':  { panel: document.getElementById('exp-formacao'),  card: document.getElementById('exp-formacao-card'),  open: 'Ocultar detalhes', closed: 'Ver detalhes' }
+  };
+
+  let activeKey = null;
+
+  function render() {
+    Object.entries(panels).forEach(([key, p]) => {
+      const isOpen = key === activeKey;
+      p.panel.classList.toggle('open', isOpen);
+      p.card.classList.toggle('is-active', isOpen);
+      p.card.setAttribute('aria-expanded', String(isOpen));
+      const label = p.card.querySelector('.card-link');
+      if (label) {
+        label.innerHTML = isOpen
+          ? p.open + ' <span class="arrow">↑</span>'
+          : p.closed + ' <span class="arrow">→</span>';
+      }
+    });
+
+    // Anima as barras dos gráficos visíveis
+    document.querySelectorAll('.aero-panel.open .bar-fill').forEach(bar => {
+      bar.style.width = (bar.dataset.w || 0) + '%';
+    });
+  }
+
+  function setActive(key) {
+    activeKey = (activeKey === key) ? null : key;
+    render();
+    if (activeKey) {
+      const el = panels[activeKey].panel;
+      setTimeout(() => {
+        window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 70, behavior: 'smooth' });
+      }, 60);
+    }
+  }
+
+  Object.entries(panels).forEach(([key, p]) => {
+    p.card.classList.add('is-clickable');
+
+    p.card.addEventListener('click', () => setActive(key));
+
+    p.card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setActive(key);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-close]').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      activeKey = null;
+      render();
+    });
+  });
+
+  // Links dentro dos cards não devem abrir o painel
+  document.querySelectorAll('.card .repo-link a').forEach(link => {
+    link.addEventListener('click', e => e.stopPropagation());
+  });
+
+  render();
+
+  // Imagens: mostrar quando carregarem (cobre casos já em cache)
+  function markImage(img) {
+    const frame = img.parentElement;
+    if (!frame || !frame.classList.contains('figure-frame')) return;
+    if (img.complete) {
+      frame.classList.add(img.naturalWidth > 0 ? 'has-img' : 'no-img');
+    }
+  }
+
+  document.querySelectorAll('.figure-frame img').forEach(img => {
+    img.addEventListener('load', () => markImage(img));
+    img.addEventListener('error', () => markImage(img));
+    markImage(img);
+  });
+
+  // Revelar elementos no scroll
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>

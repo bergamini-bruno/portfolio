@@ -1,0 +1,22 @@
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Originais e duplicados (as versões usadas ficam em img/)
+1.png
+2.png
+3.png
+4.jpeg
+5.png
+6.png
+agendando.png
+bot_agendamentos.png
+prompt_injection.png
+WhatsApp Video*.mp4
+
+# Documentos não usados no site
+Documento sem título (1).pdf
